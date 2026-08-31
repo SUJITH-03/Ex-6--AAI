@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
-<H3>EX. NO.6</H3>
-<H3>DATE:</H3>
+<H3>NAME : SUJITH A</H3>
+<H3>REGISTER NO : 212224230278</H3>
+<H3>EX. NO.8</H3>
+<H3>DATE: 31.08.2026</H3>
 <H1 ALIGN =CENTER>Implementation of Semantic ANalysis</H1>
 <H3>Aim: to perform Parts of speech identification and Synonym using Natural Language Processing (NLP) techniques. </H3> 
  <BR>
@@ -18,11 +18,33 @@ Step 5:Iterate through each word in the tokenized text.<br>
 •	Print the unique sets of synonyms and antonyms.
 <H3>Program:</H3>
 
-Insert your code here
+```PYTHON
+import nltk
+from nltk.corpus import wordnet
+
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('averaged_perceptron_tagger_eng')
+sentence = input("Enter a sentence: ")
+words = sentence.split()
+pos_tags = nltk.pos_tag(words)
+synonyms = []
+antonyms = []
+for word in words:
+    for syn in wordnet.synsets(word):
+        for lemma in syn.lemmas():
+            synonyms.append(lemma.name())
+            if lemma.antonyms():
+                antonyms.append(lemma.name())
+print("POS Tags:", pos_tags)
+print("Synonyms:", set(synonyms))
+print("Antonyms:", set(antonyms))
+```
 
 <H3>Output</H3>
 
-Show your results here
+<img width="1716" height="277" alt="image" src="https://github.com/user-attachments/assets/9b60efd9-deb0-44a0-bf0d-939cb1a6cf48" />
+
 
 <H3>Result:</H3>
 Thus ,the program to perform the Parts of Speech identification and Synonymis executed sucessfully.
